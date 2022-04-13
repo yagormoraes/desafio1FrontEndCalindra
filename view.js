@@ -1,8 +1,34 @@
-class View{
-    viewItem(data){
-        const render = document.getElementById('renderResults')
-        render.textContent = JSON.stringify(data)
-    }
-}
+const cardProducts = document.getElementById('cardProducts') 
 
-export default View
+const cards = (array) =>{
+    cardProducts.innerHTML = ''
+    for( let i = 0; i < array.lenght; i++ ){
+        cardProducts.innerHTML = `
+        <div class = "card-produtos">
+            <div class = "nome"> 
+                <h3> ${arr[i].name} </h3> 
+            </div>
+            <div class = "id">
+                <p>Id</p>
+                <p> ${arr[i].id} </p>
+            </div>
+            <div class = "tipo">
+                <p>Tipo</p>
+                <p> ${arr[i].type} </p>
+            </div>
+            <div class = "meta">
+                <div class = "pontos">
+                    <p>Pontuação</p>
+                    <p> ${arr[i]._meta.score} </p>
+                </div>
+                <div class = "visitas">
+                    <p>visitas no site</p>
+                    <p> ${arr[i]._meta.visitsClickCount} </p>
+                </div>
+            </div>
+        </div>
+        `
+    }
+    console.log(cardProducts);
+
+}
