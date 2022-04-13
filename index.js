@@ -11,15 +11,11 @@ btn.addEventListener('click',(e)=>{
         let produtosObj = resp.data.products
         algumacoisa.innerHTML = ''
         
-        
         for(let i = 0; i < produtosObj.length; i++){
             console.log(produtosObj);
-            //const produto = JSON.stringify(produtosObj[i])
-            //console.log(typeof produto);
-            //console.log(produto);
             algumacoisa.innerHTML += `
             <div class="card">
-                <p>Nome: ${produtosObj[i].name}</p>
+                <p class="text">Nome: ${produtosObj[i].name}</p>
                 <p>ID: ${produtosObj[i].id}</p>
                 <p>Pontuação: ${produtosObj[i]._meta.score}</p>
                 <p>Visitas ao produto: ${produtosObj[i]._meta.visitsClickCount}</p>
