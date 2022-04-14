@@ -11,6 +11,9 @@ btn.addEventListener('click',(e)=>{
             const cardProducts = document.getElementById('cardProducts')
             let produtosObj = resp.data.products
             cardProducts.innerHTML = ''
+
+            const errorMessage = document.getElementById('errorMessage')
+            errorMessage.innerHTML = ''
             
             for(let i = 0; i < produtosObj.length; i++){
                 console.log(produtosObj);
@@ -18,6 +21,7 @@ btn.addEventListener('click',(e)=>{
                 <div class="card">
                     <p class="text">Nome: ${produtosObj[i].name}</p>
                     <p>ID: ${produtosObj[i].id}</p>
+                    <p>Tipo: ${produtosObj[i].type}</p>
                     <p>Pontuação: ${produtosObj[i]._meta.score}</p>
                     <p>Visitas ao produto: ${produtosObj[i]._meta.visitsClickCount}</p>
                 </div>
@@ -28,11 +32,8 @@ btn.addEventListener('click',(e)=>{
         .catch(e => e.message)
 
     }else{
-        const cardProducts = document.getElementById('cardProducts')
-        cardProducts.innerHTML = 'Vazio'
+        const errorMessage = document.getElementById('errorMessage')
+        errorMessage.innerHTML = 'Digite um produto existente'
     }
-    
-    
-
     
 })
