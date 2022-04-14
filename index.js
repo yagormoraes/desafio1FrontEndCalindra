@@ -1,28 +1,38 @@
 const btn = document.getElementById('button')
 btn.addEventListener('click',(e)=>{
     e.preventDefault()
+
     const valor = document.querySelector('.productClass').value
-    const url = `https://mystique-v2-americanas.juno.b2w.io/autocomplete?content=${valor}&source=nanook`
-
-    axios.get(url)
-    .then(resp => {
-
-        const algumacoisa = document.getElementById('cardProducts')
-        let produtosObj = resp.data.products
-        algumacoisa.innerHTML = ''
+    if(valor != ''){
+        const url = `https://mystique-v2-americanas.juno.b2w.io/autocomplete?content=${valor}&source=nanook`
         
-        for(let i = 0; i < produtosObj.length; i++){
-            console.log(produtosObj);
-            algumacoisa.innerHTML += `
-            <div class="card">
-                <p class="text">Nome: ${produtosObj[i].name}</p>
-                <p>ID: ${produtosObj[i].id}</p>
-                <p>Pontuação: ${produtosObj[i]._meta.score}</p>
-                <p>Visitas ao produto: ${produtosObj[i]._meta.visitsClickCount}</p>
-            </div>
-            ` 
+        axios.get(url)
+        .then(resp => {
+            const cardProducts = document.getElementById('cardProducts')
+            let produtosObj = resp.data.products
+            cardProducts.innerHTML = ''
+            
+            for(let i = 0; i < produtosObj.length; i++){
+                console.log(produtosObj);
+                cardProducts.innerHTML += `
+                <div class="card">
+                    <p class="text">Nome: ${produtosObj[i].name}</p>
+                    <p>ID: ${produtosObj[i].id}</p>
+                    <p>Pontuação: ${produtosObj[i]._meta.score}</p>
+                    <p>Visitas ao produto: ${produtosObj[i]._meta.visitsClickCount}</p>
+                </div>
+                ` 
+            }
         }
+            )
+        .catch(e => e.message)
+
+    }else{
+        const cardProducts = document.getElementById('cardProducts')
+        cardProducts.innerHTML = 'Vazio'
     }
-        )
-    .catch(e => e.message)
+    
+    
+
+    
 })

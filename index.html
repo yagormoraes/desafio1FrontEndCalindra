@@ -9,21 +9,29 @@
 </head>
 <body>
     <header>
-        <h1>Titulo</h1>
+        <h1>Pesquisa de Produtos</h1>
     </header>
 
     <section>
         <form >
-            <input type="text" id="product" name="product" class="productClass" >
-            <label for="product">Procure por um produto</label>
-            <button id="button">Clique aqui</button>
+            <label for="product">Barra de Pesquisa:</label>
+            <input type="text" id="product" name="product" class="productClass" placeholder="Digite o nome do produto" >
+            <button id="button">Pesquisar</button>
         </form>
+        <div>
+            <p id="errorMessage"></p>
+        </div>
     </section>
     
     <main id="cardProducts"></main>
     
     <footer>
-        <p>Rodapé</p>
+        <p>Contatos</p>
+        <ul id="list">
+            <li>Facebook</li>
+            <li>LinkedIn</li>
+            <li>Github</li>
+        </ul>
     </footer>
 
     
